@@ -3,7 +3,7 @@
 - [Steps](#Steps)
   - [Arm](#Arm)
   - [Turtle](#Turtle)
-  - [Link Arm with Turtle](#Link_Arm_with_Turtle)
+  - [Link Arm with Turtle](#Link-Arm-with-Turtle)
   - [Enviroment](#Enviroment)   
   
 
@@ -19,6 +19,6 @@
 ### Turtle
 
 
-### Link Arm with Turtle
+### Link-Arm-with-Turtle
 
 ### Enviroment
