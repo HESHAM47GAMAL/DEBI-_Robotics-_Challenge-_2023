@@ -19,6 +19,6 @@
 ### Turtle
 
 
-### Link-Arm-with-Turtle
+### Link Arm with Turtle
 
 ### Enviroment
