@@ -20,7 +20,7 @@
 <p> 1.Install dependent pacakges 
 ```console
 sudo apt-get install ros-kinetic-ros-controllers ros-kinetic-gazebo* ros-kinetic-moveit* ros-kinetic-industrial-core
-
+```
 <p> <a href="https://www.youtube.com/watch?v=aKKdiqVHNqw" >🔗Press</a> </p>
 
 ### Turtle
