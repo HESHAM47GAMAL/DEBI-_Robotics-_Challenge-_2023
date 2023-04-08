@@ -9,6 +9,7 @@
 
 
 ## Description
+<p> ⚡️ it's competition for robotics to search for bools in own half of track an catch it using arm and throw it in half contender 
 
 
 ## Steps
