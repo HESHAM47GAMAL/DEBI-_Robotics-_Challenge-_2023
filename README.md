@@ -17,21 +17,29 @@
 
 ### Arm 
 <p> ⚡️ follow setup
-<p> 1.Install dependent pacakges 
+<p> 1.Install dependent pacakges (🙆‍♂️️version Noetic )
   
 ```console
-  sudo apt-get install ros-kinetic-ros-controllers ros-kinetic-gazebo* ros-kinetic-moveit* ros-kinetic-industrial-core
-  sudo apt-get install ros-kinetic-dynamixel-sdk ros-kinetic-dynamixel-workbench*
-  sudo apt-get install ros-kinetic-robotis-manipulator
+  sudo apt-get install ros-noetic-ros-controllers ros-noetic-gazebo* ros-noetic-moveit* ros-noetic-industrial-core
+  sudo apt install ros-noetic-dynamixel-sdk ros-noetic-dynamixel-workbench*
+  sudo apt install ros-noetic-robotis-manipulator
 ```
-<p> 2.Download and build OpenMANIPULATOR-X packages
+<p> 2.Download and build OpenMANIPULATOR-X packages (but 👀️👀️👀️ I clone those and pressent in this repo)
   
   ```console
-  git clone -b kinetic-devel https://github.com/ROBOTIS-GIT/open_manipulator.git
-  git clone -b kinetic-devel https://github.com/ROBOTIS-GIT/open_manipulator_msgs.git
-  git clone -b kinetic-devel https://github.com/ROBOTIS-GIT/open_manipulator_simulations.git
+  git clone -b noetic-devel https://github.com/ROBOTIS-GIT/open_manipulator.git
+  git clone -b noetic-devel https://github.com/ROBOTIS-GIT/open_manipulator_msgs.git
+  git clone -b noetic-devel https://github.com/ROBOTIS-GIT/open_manipulator_simulations.git
   git clone https://github.com/ROBOTIS-GIT/open_manipulator_dependencies.git
 ```
+  
+ <p> To start moving Arm in Gazebo follow steps 
+ ```console
+  roslaunch open_manipulator_gazebo open_manipulator_gazebo.launch
+  roslaunch open_manipulator_controller open_manipulator_controller.launch use_platform:=false
+  roslaunch open_manipulator_control_gui open_manipulator_control_gui.launch 
+```
+ 
   
 <p> <a href="https://www.youtube.com/watch?v=aKKdiqVHNqw" >🔗Press</a> </p>
 
