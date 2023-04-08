@@ -13,6 +13,7 @@
 
 
 ## Steps
+  <p> ⚡️Here I will describe steps to make robot work and do it 
 
 ### Arm 
 
