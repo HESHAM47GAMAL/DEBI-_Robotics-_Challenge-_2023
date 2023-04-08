@@ -22,7 +22,17 @@
 ```console
   sudo apt-get install ros-kinetic-ros-controllers ros-kinetic-gazebo* ros-kinetic-moveit* ros-kinetic-industrial-core
   sudo apt-get install ros-kinetic-dynamixel-sdk ros-kinetic-dynamixel-workbench*
+  sudo apt-get install ros-kinetic-robotis-manipulator
 ```
+<p> 2.Download and build OpenMANIPULATOR-X packages
+  
+  ```console
+  git clone -b kinetic-devel https://github.com/ROBOTIS-GIT/open_manipulator.git
+  git clone -b kinetic-devel https://github.com/ROBOTIS-GIT/open_manipulator_msgs.git
+  git clone -b kinetic-devel https://github.com/ROBOTIS-GIT/open_manipulator_simulations.git
+  git clone https://github.com/ROBOTIS-GIT/open_manipulator_dependencies.git
+```
+  
 <p> <a href="https://www.youtube.com/watch?v=aKKdiqVHNqw" >🔗Press</a> </p>
 
 ### Turtle
