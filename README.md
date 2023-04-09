@@ -55,7 +55,26 @@
   <p> for more info follow <a href="https://emanual.robotis.com/docs/en/platform/openmanipulator_x/ros_simulation/#launch-gazebo" >🔗Press</a> </p>
 
 ### Turtle
+<p> ⚡️ follow setup
+<p> 1.Install Dependent ROS Packages (🙆‍♂️️version Noetic )
 
+```console
+sudo apt-get install ros-noetic-joy ros-noetic-teleop-twist-joy \
+  ros-noetic-teleop-twist-keyboard ros-noetic-laser-proc \
+  ros-noetic-rgbd-launch ros-noetic-rosserial-arduino \
+  ros-noetic-rosserial-python ros-noetic-rosserial-client \
+  ros-noetic-rosserial-msgs ros-noetic-amcl ros-noetic-map-server \
+  ros-noetic-move-base ros-noetic-urdf ros-noetic-xacro \
+  ros-noetic-compressed-image-transport ros-noetic-rqt* ros-noetic-rviz \
+  ros-noetic-gmapping ros-noetic-navigation ros-noetic-interactive-markers
+  ```
+  <p> 2.Install TurtleBot3 Packages
+  
+  ```console
+  sudo apt install ros-noetic-dynamixel-sdk
+  sudo apt install ros-noetic-turtlebot3-msgs
+  sudo apt install ros-noetic-turtlebot3
+  ```
 
 ### Link Arm with Turtle
 
