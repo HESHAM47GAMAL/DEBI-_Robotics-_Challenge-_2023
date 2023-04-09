@@ -45,6 +45,10 @@
   roslaunch open_manipulator_controller open_manipulator_controller.launch use_platform:=false
   roslaunch open_manipulator_control_gui open_manipulator_control_gui.launch 
   ```
+  
+  <p>
+  <img src = "https://github.com/HESHAM47GAMAL/DEBI-_Robotics-_Challenge-_2023/blob/main/pic_github/Gazebo.png"/>
+  </p>
  
   
   <p> for more info follow <a href="https://emanual.robotis.com/docs/en/platform/openmanipulator_x/ros_simulation/#launch-gazebo" >🔗Press</a> </p>
