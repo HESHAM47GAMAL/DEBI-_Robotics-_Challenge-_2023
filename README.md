@@ -47,7 +47,7 @@
   ```
  
   
-<p> for more info follow <a href="https://emanual.robotis.com/docs/en/platform/openmanipulator_x/ros_simulation/#launch-gazebo" >🔗Press</a> </p>
+  <p> for more info follow <a href="https://emanual.robotis.com/docs/en/platform/openmanipulator_x/ros_simulation/#launch-gazebo" >🔗Press</a> </p>
 
 ### Turtle
 
