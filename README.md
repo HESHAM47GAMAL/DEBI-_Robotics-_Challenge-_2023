@@ -40,6 +40,7 @@
   ```
   
   <p> 👀️👀️👀️👀️👀️👀️👀️👀️👀️👀️👀️👀️ Don't forget press on fucken pitch play button 🙃
+    
   ```console
   roslaunch open_manipulator_controller open_manipulator_controller.launch use_platform:=false
   roslaunch open_manipulator_control_gui open_manipulator_control_gui.launch 
