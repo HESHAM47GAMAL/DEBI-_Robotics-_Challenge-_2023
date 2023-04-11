@@ -96,5 +96,18 @@ sudo apt-get install ros-noetic-joy ros-noetic-teleop-twist-joy \
   sudo apt-get install ros-noetic-moveit-ros-planning-interface
   ```
   
+<p> ⚡️ To launch Robot in Gazebo 
+  
+```console
+  roslaunch turtlebot3_manipulation_gazebo turtlebot3_manipulation_gazebo.launch
+```
+  
+<p>  press [▶] button in Gazebo to start simulation
+<p> ⚡️ To control arm 
+  
+```console
+  roslaunch turtlebot3_manipulation_moveit_config move_group.launch
+  roslaunch turtlebot3_manipulation_gui turtlebot3_manipulation_gui.launch
+```
   
 ### Enviroment
