@@ -95,6 +95,11 @@ sudo apt-get install ros-noetic-joy ros-noetic-teleop-twist-joy \
   sudo apt-get install ros-noetic-moveit-ros-planning
   sudo apt-get install ros-noetic-moveit-ros-planning-interface
   ```
+<p> 🙀️ save time of select robot type and run in terminal 
+  
+```console 
+  echo 'export TURTLEBOT3_MODEL=waffle_pi' >> ~/.bashrc
+```
   
 <p> ⚡️ To launch Robot in Gazebo 
   
@@ -103,11 +108,12 @@ sudo apt-get install ros-noetic-joy ros-noetic-teleop-twist-joy \
 ```
   
 <p>  press [▶] button in Gazebo to start simulation
-<p> ⚡️ To control arm 
+<p> ⚡️ To 🎮️control arm and moving of Robot 
   
 ```console
   roslaunch turtlebot3_manipulation_moveit_config move_group.launch
   roslaunch turtlebot3_manipulation_gui turtlebot3_manipulation_gui.launch
+  roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch
 ```
   
 ### Enviroment
