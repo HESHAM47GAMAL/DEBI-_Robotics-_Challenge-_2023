@@ -3,8 +3,8 @@
 - [Steps](#Steps)
   - [Arm](#Arm)
   - [Turtle](#Turtle)
-  - [🔥Link Arm with Turtle](#Link-Arm-with-Turtle)
-  - [Enviroment](#Enviroment)   
+- [🔥Turtle openManipulator](#Turtle-openManipulator)
+- [Enviroment](#Enviroment)   
   
 
 
@@ -76,6 +76,6 @@ sudo apt-get install ros-noetic-joy ros-noetic-teleop-twist-joy \
   sudo apt install ros-noetic-turtlebot3
   ```
 
-### Link Arm with Turtle
+# 🔥Turtle openManipulator
 
 ### Enviroment
