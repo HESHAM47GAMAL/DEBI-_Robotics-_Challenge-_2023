@@ -84,5 +84,17 @@ sudo apt-get install ros-noetic-joy ros-noetic-teleop-twist-joy \
   git clone https://github.com/ROBOTIS-GIT/turtlebot3_manipulation_simulations.git
   git clone https://github.com/ROBOTIS-GIT/open_manipulator_dependencies.git
 ```
+
+<p> May face problem in build due to moveitmsgs & object_recognition_msgs,octomap-msgs ,moveit core , plane interface to solve them 
+  
+```console 
+  git clone https://github.com/ros-planning/moveit_msgs.git
+  sudo apt-get install ros-noetic-object-recognition-msgs
+  sudo apt-get install ros-noetic-octomap-msgs
+  sudo apt-get install ros-noetic-moveit-core
+  sudo apt-get install ros-noetic-moveit-ros-planning
+  sudo apt-get install ros-noetic-moveit-ros-planning-interface
+  ```
+  
   
 ### Enviroment
