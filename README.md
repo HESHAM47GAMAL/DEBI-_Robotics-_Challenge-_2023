@@ -77,5 +77,12 @@ sudo apt-get install ros-noetic-joy ros-noetic-teleop-twist-joy \
   ```
 
 # 🔥Turtle openManipulator
-
+<p> Download and build packages
+  
+```console
+  git clone https://github.com/ROBOTIS-GIT/turtlebot3_manipulation.git
+  git clone https://github.com/ROBOTIS-GIT/turtlebot3_manipulation_simulations.git
+  git clone https://github.com/ROBOTIS-GIT/open_manipulator_dependencies.git
+```
+  
 ### Enviroment
