@@ -11,7 +11,7 @@ def send_gripper_command(position, duration):
     :param position: float, Position of the gripper
     :param duration: float, Duration of the movement
     """
-    client = actionlib.SimpleActionClient('/gripper_control/follow_joint_trajectory', FollowJointTrajectoryAction)
+    client = actionlib.SimpleActionClient('/gripper_controller/follow_joint_trajectory', FollowJointTrajectoryAction)
     client.wait_for_server()
 
     # Define the joint names
@@ -40,6 +40,7 @@ if __name__ == '__main__':
     rospy.init_node('gripper_control_node')
 
     # Example: open and close the gripper
-    send_gripper_command(position=1.0, duration=1.0)  # Open the gripper
+    send_gripper_command(position=0.02, duration=1.0)  # Open the gripper
+    # send_gripper_command(position=0.0, duration=1.0)  # Close the gripper
+
     rospy.sleep(2.0)
-    send_gripper_command(position=0.0, duration=1.0)  # Close the gripper
