@@ -1,6 +1,7 @@
 <?xml version="1.0"?>
 <launch>
     <!-- Arguemnet  -->
+    <!-- <arg name="gazebo_config_file" default="$(find Env)/config/track.gazebo"/> -->
     <arg name="model" default="$(env TURTLEBOT3_MODEL)" doc="model type [waffle, waffle_pi]"/>
     <arg name="world_file" default="$(find Env)/worlds/Track.world"/>
     <arg name="paused" default="false"/>
@@ -30,7 +31,7 @@
 
     <!-- push robot_description to factory and spawn robot in gazebo -->
     <node name="spawn_gazebo_model" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
-    args="-urdf -param robot_description -model robot -x -0.9 -y -0.5 -Y 0.0 -J joint1 0.0 -J joint2 0.0 -J joint3 0.0 -J joint4 0.0 -J gripper 0.0 -J gripper_sub 0.0 -z 0.1"/>
+    args="-urdf -param robot_description -model robot -x -0.9 -y -0.5 -Y 0.0 -J joint1 0.0 -J joint2 0.0 -J joint3 0.0 -J joint4 0.0 -J gripper 0.0 -J gripper_sub 0.0 "/>
     <!-- -x 0.0 -y 0.0 -Y 0.0  Here set initial position of robot -->
 
     <!-- controller utils -->

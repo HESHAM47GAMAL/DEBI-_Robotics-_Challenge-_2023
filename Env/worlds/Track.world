@@ -37,8 +37,8 @@
             </contact>
             <friction>
               <ode>
-                <mu>100</mu>
-                <mu2>50</mu2>
+                <mu>200</mu>
+                <mu2>100</mu2>
               </ode>
               <torsional>
                 <ode/>
@@ -57,10 +57,13 @@
             </plane>
           </geometry>
           <material>
-            <script>
+             <ambient>0.8 0.8 0.8 1</ambient>
+            <diffuse>0.8 0.8 0.8 1</diffuse>
+            <specular>0.8 0.8 0.8 1</specular>
+            <!-- <script>
               <uri>file://media/materials/scripts/gazebo.material</uri>
               <name>Gazebo/Grey</name>
-            </script>
+            </script> -->
           </material>
         </visual>
         <self_collide>0</self_collide>
@@ -70,7 +73,7 @@
     </model>
 
 
-    <gravity>0 0 -9.8</gravity>
+    <gravity>0 0 -5</gravity>
     <magnetic_field>6e-06 2.3e-05 -4.2e-05</magnetic_field>
     <atmosphere type='adiabatic'/>
     <physics type='ode'>
