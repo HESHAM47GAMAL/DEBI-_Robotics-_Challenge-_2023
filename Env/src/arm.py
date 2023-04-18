@@ -13,7 +13,7 @@ def main():
 
     # Define the joint names and the target joint positions
     joint_names = ['joint1', 'joint2', 'joint3', 'joint4']
-    target_positions = [0.2, 0.5, -0.5, 0.4]
+    target_positions = [0,0.650,0.100,0.00]
 
     # Create a joint trajectory message
     trajectory = JointTrajectory()
