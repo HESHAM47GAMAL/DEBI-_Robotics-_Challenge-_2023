@@ -35,8 +35,8 @@
             </contact>
             <friction>
               <ode>
-                <mu>100</mu>
-                <mu2>50</mu2>
+                <mu>200</mu>
+                <mu2>100</mu2>
               </ode>
               <torsional>
                 <ode/>
@@ -66,7 +66,9 @@
         <kinematic>0</kinematic>
       </link>
     </model>
-    <gravity>0 0 -9.8</gravity>
+
+
+    <gravity>0 0 -5</gravity>
     <magnetic_field>6e-06 2.3e-05 -4.2e-05</magnetic_field>
     <atmosphere type='adiabatic'/>
     <physics type='ode'>
@@ -498,7 +500,7 @@
       </link>
     </model>
 
-    
+
     <state world_name='default'>
       <sim_time>224 516000000</sim_time>
       <real_time>269 10252726</real_time>

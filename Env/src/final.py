@@ -47,25 +47,25 @@ rospy.init_node("control_Robot")
 
 speed = Twist()
 
-r = rospy.Rate(50)
+r = rospy.Rate(30)
 
 goal = Point()
 
 
-def get_x_pos():
+def get_x_pos(linear =0.1 , angle =0.05): ##0.1 , 0.05
     condition = True
     while ( condition):
         #edit oreintation of robot first
         rospy.loginfo("try to catch X in front")
         rospy.loginfo("rot_q_z is %s", rot_q_z)
         if(rot_q_z > 0 ):  ### here may need to take abs of rot_q_z
-            speed.angular.z = -0.05
+            speed.angular.z = -angle##-0.05
             if(rot_q_z < 0.001):
                 condition = False
                 speed.angular.z = 0.0
 
         else :
-            speed.angular.z = 0.05
+            speed.angular.z = angle##0.05
             if(rot_q_z > -0.001):
                 condition = False
                 speed.angular.z = 0.0
@@ -83,7 +83,7 @@ def get_x_pos():
         inc_x = goal.x - x
         inc_y = goal.y -y
 
-        speed.linear.x = 0.1 
+        speed.linear.x = linear
         #if ((inc_x > 0.001) or (inc_y > 0.001) ) else -0.1
         speed.angular.z = 0.0
         #publish data to monitor
@@ -133,15 +133,15 @@ def get_x_neg():
     speed.angular.z = 0.0
     pub.publish(speed)
 
-def rotate():
+def rotate(angle):
     # rospy.loginfo("angle dif is %s", rot_q_z - goal.z)
     # rospy.loginfo("angle  is %s", rot_q_z )
-    rospy.loginfo("Catch orientation")
+    # rospy.loginfo("Catch orientation")
     while(rot_q_z - goal.z < 0.001):
         rospy.loginfo("angle is %s", rot_q_z - goal.z)
         # if(rot_q_z - goal.z)
         speed.linear.x = 0.0
-        speed.angular.z = 0.08 if rot_q_z < goal.z else -0.08
+        speed.angular.z = angle if rot_q_z < goal.z else -angle ##0.08
         pub.publish(speed)
     speed.angular.z = 0.0
     speed.linear.x = 0.0
@@ -237,15 +237,30 @@ def get_grip(position, duration):
 
 if __name__ == '__main__':
     
-    rospy.loginfo("I am in main ")
-    rospy.loginfo("I am in main ")
-    rospy.loginfo("I am in main ")
-    goal.x = -0.7510
-    goal.y = 0.235
-    goal.z = 0.7316
-    get_arm(0,0.850,0.100,0.00)
-    get_grip(position= 0.012, duration=1.0) # Open the gripper
-    get_x_pos()
-    rotate()
+    rospy.loginfo("control_Robot Created and here to serve ")
+
+    ## First goal to catch Green ball 
+    goal.x = -1.0391    
+    goal.y = 0.5021 ##0.5011
+    goal.z = 0.711
+    get_arm(0,0.860,0.100,0.050)
+    get_grip(position= 0.022, duration=1.0) # Open the gripper
+    get_x_pos(0.1,0.05)
+    rotate(0.08)
     get_y_pos()
-    get_grip(position= -0.014, duration=1.0) # Open the gripper
+    rospy.sleep(2)
+    goal.y = 0.5551
+    rotate(0.08)
+    get_y_pos()
+    # # rospy.sleep(3)
+    get_grip(position= -0.018, duration=1.0)  #Close the gripper
+    # # rospy.sleep(5)
+
+    ## First goal to catch barrier to though ball 
+    goal.x = -0.089
+    goal.y = 0.5821
+    goal.z = 0.9987
+    get_arm(0,0.0,0.0,0.0)
+    get_x_pos(0.2,0.15)
+    get_arm(0,0.700, -0.700,0.00)   #angles to through ball in second half
+    get_grip(position= 0.018, duration=1.0) # Open the gripper
