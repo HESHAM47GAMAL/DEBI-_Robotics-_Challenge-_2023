@@ -61,8 +61,8 @@ while not rospy.is_shutdown():
         inc_x = goal.x - x
         inc_y = goal.y -y
 
-        rospy.loginfo("check is %s", (abs(inc_x) > 0.005) and  X_reached)
 
+        rospy.loginfo("check is %s", (abs(inc_x) > 0.005) and  X_reached)
         ## to catch X position 
         if (abs(inc_x) > 0.005)    :
             

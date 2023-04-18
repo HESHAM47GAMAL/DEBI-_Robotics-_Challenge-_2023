@@ -29,7 +29,7 @@ def newOdom (msg):
     rot_q_z = rot_q.z
     rot_q_w = rot_q.w
     (roll , pitch , theta) = euler_from_quaternion([rot_q.x , rot_q.y ,rot_q.z , rot_q.w])
-    rospy.loginfo("get new data")
+    # rospy.loginfo("get new data")
 
 sub = rospy.Subscriber("/odom", Odometry, newOdom)
 pub = rospy.Publisher("/cmd_vel", Twist , queue_size=1 )
@@ -56,8 +56,8 @@ def get_x_pos(linear =0.1 , angle =0.05): ##0.1 , 0.05
     condition = True
     while ( condition):
         #edit oreintation of robot first
-        rospy.loginfo("try to catch X in front")
-        rospy.loginfo("rot_q_z is %s", rot_q_z)
+        # rospy.loginfo("try to catch X in front")
+        # rospy.loginfo("rot_q_z is %s", rot_q_z)
         if(rot_q_z > 0 ):  ### here may need to take abs of rot_q_z
             speed.angular.z = -angle##-0.05
             if(rot_q_z < 0.001):
@@ -74,11 +74,11 @@ def get_x_pos(linear =0.1 , angle =0.05): ##0.1 , 0.05
         pub.publish(speed)
     inc_x = goal.x - x
     inc_y = goal.y -y
-    rospy.loginfo("inc_x is %s", inc_x)
+    # rospy.loginfo("inc_x is %s", inc_x)
     #move to target X
     while(inc_x > 0.001):
-        rospy.loginfo("try to catch X and move X +")
-        rospy.loginfo("inc_x is %s", inc_x)
+        # rospy.loginfo("try to catch X and move X +")
+        # rospy.loginfo("inc_x is %s", inc_x)
         #update reading 
         inc_x = goal.x - x
         inc_y = goal.y -y
@@ -98,7 +98,7 @@ def get_x_pos(linear =0.1 , angle =0.05): ##0.1 , 0.05
 def get_x_neg():
     condition = True
     while ( condition):
-        rospy.loginfo("try to catch X in back")
+        # rospy.loginfo("try to catch X in back")
         if(rot_q_w > 0 ):
             speed.angular.z = 0.05
             if(rot_q_w < 0.001):
@@ -117,7 +117,7 @@ def get_x_neg():
         pub.publish(speed)
     #move to target X
     while(inc_x < -0.001):
-        rospy.loginfo("try to catch X and move X -")
+        # rospy.loginfo("try to catch X and move X -")
         #update reading 
         inc_x = goal.x - x
         inc_y = goal.y -y
@@ -133,12 +133,12 @@ def get_x_neg():
     speed.angular.z = 0.0
     pub.publish(speed)
 
-def rotate(angle):
+def rotate_pos(angle):
     # rospy.loginfo("angle dif is %s", rot_q_z - goal.z)
     # rospy.loginfo("angle  is %s", rot_q_z )
-    # rospy.loginfo("Catch orientation")
+    # rospy.loginfo("Catch orientation + ")
     while(rot_q_z - goal.z < 0.001):
-        rospy.loginfo("angle is %s", rot_q_z - goal.z)
+        # rospy.loginfo("angle is %s", rot_q_z - goal.z)
         # if(rot_q_z - goal.z)
         speed.linear.x = 0.0
         speed.angular.z = angle if rot_q_z < goal.z else -angle ##0.08
@@ -148,15 +148,32 @@ def rotate(angle):
     pub.publish(speed)
     rospy.loginfo("finished Rotation")
 
+def rotate_neg(angle):
+    # rospy.loginfo("angle dif is %s", rot_q_z - goal.z)
+    # rospy.loginfo("angle  is %s", rot_q_z )
+    # rospy.loginfo("Catch orientation  - ")
+    while(rot_q_z - goal.z > 0.001):
+        # rospy.loginfo("angle is %s", rot_q_z - goal.z)
+        # if(rot_q_z - goal.z)
+        speed.linear.x = 0.0
+        speed.angular.z = angle 
+        ##if rot_q_z < goal.z else -angle ##0.08
+        pub.publish(speed)
+    speed.angular.z = 0.0
+    speed.linear.x = 0.0
+    pub.publish(speed)
+    rospy.loginfo("finished Rotation")
+
+
 
 def get_y_pos():
     inc_x = goal.x - x
     inc_y = goal.y -y
-    rospy.loginfo("inc_y is %s", inc_y)
+    # rospy.loginfo("inc_y is %s", inc_y)
     # move to target y
     while(inc_y > 0.001):
-        rospy.loginfo("try to catch Y and move Y +")
-        rospy.loginfo("inc_y is %s", inc_y)
+        # rospy.loginfo("try to catch Y and move Y +")
+        # rospy.loginfo("inc_y is %s", inc_y)
         #update reading 
         inc_x = goal.x - x
         inc_y = goal.y -y
@@ -169,6 +186,26 @@ def get_y_pos():
         pub_1.publish(inc_x)
         pub_2.publish(inc_y)
     rospy.loginfo("finished Y +")
+    speed.linear.x = 0.0
+    speed.angular.z = 0.0
+    pub.publish(speed)
+
+def get_y_neg():
+    inc_y = goal.y -y
+    # rospy.loginfo("inc_y is %s", inc_y)
+    while(inc_y < 0.001):
+        # rospy.loginfo("try to catch Y and move Y +")
+        # rospy.loginfo("inc_y is %s", inc_y)
+        #update reading 
+        inc_y = goal.y -y
+
+        speed.linear.x = 0.1 
+        #if ((inc_x > 0.001) or (inc_y > 0.001) ) else -0.1
+        speed.angular.z = 0.0
+        #publish data to monitor
+        pub.publish(speed)
+        pub_2.publish(inc_y)
+    rospy.loginfo("finished Y -")
     speed.linear.x = 0.0
     speed.angular.z = 0.0
     pub.publish(speed)
@@ -232,6 +269,29 @@ def get_grip(position, duration):
     client.wait_for_result(rospy.Duration.from_sec(5.0))
     rospy.loginfo("Gripper  ")
 
+def back():
+    inc_x = goal.x - x
+    # rospy.loginfo("Back")
+    # rospy.loginfo("inc_x is %s", inc_x)
+    #move to target X
+    while(inc_x < 0.001):
+        # rospy.loginfo("try to catch X in back")
+        # rospy.loginfo("inc_x is %s", inc_x)
+        #update reading 
+        inc_x = goal.x - x
+
+        speed.linear.x = -0.1
+        #if ((inc_x > 0.001) or (inc_y > 0.001) ) else -0.1
+        speed.angular.z = 0.0
+        #publish data to monitor
+        pub.publish(speed)
+        pub_1.publish(inc_x)
+    rospy.loginfo("finished X back")
+    speed.linear.x = 0.0
+    speed.angular.z = 0.0
+    pub.publish(speed)
+
+
 
 
 
@@ -239,27 +299,74 @@ if __name__ == '__main__':
     
     rospy.loginfo("control_Robot Created and here to serve ")
 
-    ## First goal to catch Green ball 
+    ## 👀️👀️👀️👀️First goal to catch Green ball 
     goal.x = -1.0391    
     goal.y = 0.5021 ##0.5011
-    goal.z = 0.711
+    goal.z = 0.712 ##0.711
     get_arm(0,0.860,0.100,0.050)
     get_grip(position= 0.022, duration=1.0) # Open the gripper
     get_x_pos(0.1,0.05)
-    rotate(0.08)
+    rospy.sleep(1)####
+    rotate_pos(0.08)
+    # rospy.sleep(1)###
     get_y_pos()
-    rospy.sleep(2)
-    goal.y = 0.5551
-    rotate(0.08)
+    rospy.sleep(1)
+    goal.y = 0.5571
+    rotate_pos(0.08)
     get_y_pos()
     # # rospy.sleep(3)
     get_grip(position= -0.018, duration=1.0)  #Close the gripper
     # # rospy.sleep(5)
 
     ## First goal to catch barrier to though ball 
-    goal.x = -0.089
+    goal.x = -0.095
     goal.y = 0.5821
     goal.z = 0.9987
+    get_arm(0,0.0,0.0,0.0)
+    get_x_pos(0.2,0.15)
+    get_arm(0,0.700, -0.700,0.00)   #angles to through ball in second half
+    get_grip(position= 0.018, duration=1.0) # Open the gripper
+
+    ## 👀️👀️👀️👀️Second goal to catch Green ball 
+    goal.x = -0.3910
+    goal.y = 0.1539
+    goal.z = -0.7101 
+    back()
+    get_arm(0,0.860,0.100,0.050)
+    rotate_neg(-0.08)
+    get_y_neg()
+    goal.y = 0.0915
+    rospy.sleep(1)
+    rotate_neg(-0.08)
+    get_y_neg()
+    get_grip(position= -0.018, duration=1.0)  #Close the gripper
+    ## Second goal to catch barrier to though ball 
+    goal.x = -0.095
+    goal.y = 0.0971
+    goal.z = -0.7101 
+    get_arm(0,0.0,0.0,0.0)
+    get_x_pos(0.2,0.15)
+    get_arm(0,0.700, -0.700,0.00)   #angles to through ball in second half
+    get_grip(position= 0.018, duration=1.0) # Open the gripper
+
+
+    ## 👀️👀️👀️👀️third goal to catch Green ball 
+    goal.x = -1.4715
+    goal.y = -0.5011
+    goal.z = -0.6724
+    back()
+    get_arm(0,0.860,0.100,0.050)
+    get_grip(position= 0.018, duration=1.0) # Open the gripper
+    rotate_neg(-0.08)
+    goal.y = -0.5761
+    rospy.sleep(1)
+    rotate_neg(-0.08)
+    get_y_neg()
+    get_grip(position= -0.018, duration=1.0)  #Close the gripper
+    ## Third goal to catch barrier to though ball 
+    goal.x = -0.095
+    goal.y = -0.5011
+    goal.z = -0.7101 
     get_arm(0,0.0,0.0,0.0)
     get_x_pos(0.2,0.15)
     get_arm(0,0.700, -0.700,0.00)   #angles to through ball in second half
