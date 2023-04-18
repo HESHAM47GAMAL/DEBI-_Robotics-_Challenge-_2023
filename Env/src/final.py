@@ -319,7 +319,7 @@ if __name__ == '__main__':
     # # rospy.sleep(5)
 
     ## First goal to catch barrier to though ball 
-    goal.x = -0.095
+    goal.x = -0.115
     goal.y = 0.5821
     goal.z = 0.9987
     get_arm(0,0.0,0.0,0.0)
@@ -341,7 +341,7 @@ if __name__ == '__main__':
     get_y_neg()
     get_grip(position= -0.018, duration=1.0)  #Close the gripper
     ## Second goal to catch barrier to though ball 
-    goal.x = -0.095
+    goal.x = -0.115
     goal.y = 0.0971
     goal.z = -0.7101 
     get_arm(0,0.0,0.0,0.0)
@@ -352,22 +352,25 @@ if __name__ == '__main__':
 
     ## 👀️👀️👀️👀️third goal to catch Green ball 
     goal.x = -1.4715
-    goal.y = -0.5011
-    goal.z = -0.6724
+    goal.y = -0.5001
+    goal.z = -0.6754 #6744
     back()
     get_arm(0,0.860,0.100,0.050)
     get_grip(position= 0.018, duration=1.0) # Open the gripper
     rotate_neg(-0.08)
     goal.y = -0.5761
+    goal.z = -0.6799
     rospy.sleep(1)
     rotate_neg(-0.08)
     get_y_neg()
     get_grip(position= -0.018, duration=1.0)  #Close the gripper
     ## Third goal to catch barrier to though ball 
-    goal.x = -0.095
+    goal.x = -0.115
     goal.y = -0.5011
-    goal.z = -0.7101 
+    # goal.z = -0.7101 
     get_arm(0,0.0,0.0,0.0)
     get_x_pos(0.2,0.15)
     get_arm(0,0.700, -0.700,0.00)   #angles to through ball in second half
     get_grip(position= 0.018, duration=1.0) # Open the gripper
+
+    rospy.loginfo("Finally Three Balls Catched ")
